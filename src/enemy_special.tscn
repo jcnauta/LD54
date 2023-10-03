@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcqnae41wj4fg"]
+
+[ext_resource type="PackedScene" uid="uid://1jafcupl8sau" path="res://src/enemy.tscn" id="1_xdbd6"]
+[ext_resource type="Script" path="res://src/enemy_special.gd" id="2_j3hdu"]
+[ext_resource type="Shader" path="res://src/flash_white.gdshader" id="2_j15kg"]
+[ext_resource type="Texture2D" uid="uid://d3ck5ohvxw4bq" path="res://sprites/candy/special_candy.png" id="4_cworb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fx33y"]
+resource_local_to_scene = true
+shader = ExtResource("2_j15kg")
+shader_parameter/saturation = 0.0
+shader_parameter/tint = Vector3(1, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5avap"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cworb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kt66b"]
+size = Vector2(95, 95)
+
+[node name="EnemySpecial" instance=ExtResource("1_xdbd6")]
+position = Vector2(0, -3)
+script = ExtResource("2_j3hdu")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_fx33y")
+sprite_frames = SubResource("SpriteFrames_5avap")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("RectangleShape2D_kt66b")

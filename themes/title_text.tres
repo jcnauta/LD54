@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cnbn6fcurdx52"]
+
+[ext_resource type="FontFile" uid="uid://bal7oi6702oqv" path="res://fonts/Delius-Regular.ttf" id="1_p44it"]
+
+[resource]
+default_font = ExtResource("1_p44it")
+RichTextLabel/colors/default_color = Color(0.866667, 0, 0.501961, 1)
+RichTextLabel/font_sizes/normal_font_size = 48
+RichTextLabel/fonts/normal_font = ExtResource("1_p44it")

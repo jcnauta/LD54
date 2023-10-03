@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://hd56ksuaqu65"]
+
+[ext_resource type="FontFile" uid="uid://bal7oi6702oqv" path="res://fonts/Delius-Regular.ttf" id="1_yti3s"]
+
+[resource]
+default_font = ExtResource("1_yti3s")
+default_font_size = 22
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/fonts/normal_font = ExtResource("1_yti3s")

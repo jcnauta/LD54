@@ -1,0 +1,231 @@
+[gd_scene load_steps=18 format=3 uid="uid://d35khqg2ofcma"]
+
+[ext_resource type="Script" path="res://src/menu.gd" id="1_1p8x5"]
+[ext_resource type="Texture2D" uid="uid://7tdyp8f6j56i" path="res://icon.svg" id="1_5h6pj"]
+[ext_resource type="Texture2D" uid="uid://bp6hnimafebjb" path="res://sprites/ui/menu_bg.png" id="1_qcyj4"]
+[ext_resource type="Theme" uid="uid://cnbn6fcurdx52" path="res://themes/title_text.tres" id="2_j4xvk"]
+[ext_resource type="FontFile" uid="uid://bal7oi6702oqv" path="res://fonts/Delius-Regular.ttf" id="2_m33dp"]
+[ext_resource type="Theme" uid="uid://dxlhi1hb8cu50" path="res://themes/paragraph_text.tres" id="3_dnvua"]
+[ext_resource type="Theme" uid="uid://ddclwar7626mj" path="res://themes/button.tres" id="4_lne0j"]
+[ext_resource type="Texture2D" uid="uid://cauvusttiaylo" path="res://sprites/ui/selector.png" id="8_tae7i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_38k0b"]
+texture = ExtResource("1_qcyj4")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+
+[sub_resource type="Theme" id="Theme_pke6i"]
+default_font = ExtResource("2_m33dp")
+RichTextLabel/colors/default_color = Color(0.866667, 0, 0.501961, 1)
+RichTextLabel/font_sizes/normal_font_size = 48
+RichTextLabel/fonts/normal_font = ExtResource("2_m33dp")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amk6l"]
+atlas = ExtResource("8_tae7i")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqu80"]
+atlas = ExtResource("8_tae7i")
+region = Rect2(138, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vphwa"]
+atlas = ExtResource("8_tae7i")
+region = Rect2(276, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smac1"]
+atlas = ExtResource("8_tae7i")
+region = Rect2(414, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rmrw"]
+atlas = ExtResource("8_tae7i")
+region = Rect2(552, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kigqq"]
+atlas = ExtResource("8_tae7i")
+region = Rect2(690, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ykw5h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amk6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqu80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vphwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smac1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rmrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kigqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rmrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smac1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vphwa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="Menu" type="Panel"]
+process_mode = 3
+offset_left = 400.0
+offset_top = 149.0
+offset_right = 1000.0
+offset_bottom = 549.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_38k0b")
+script = ExtResource("1_1p8x5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="GameEnd" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="RichTextLabel" parent="MarginContainer/GameEnd"]
+layout_mode = 2
+theme = ExtResource("2_j4xvk")
+bbcode_enabled = true
+text = "[center]GAME OVER[center]"
+fit_content = true
+
+[node name="Paragraph" type="RichTextLabel" parent="MarginContainer/GameEnd"]
+layout_mode = 2
+theme = ExtResource("3_dnvua")
+bbcode_enabled = true
+text = "[center]You ate too much candy and contracted diabetes.[center]"
+fit_content = true
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/GameEnd"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme = ExtResource("4_lne0j")
+
+[node name="PlayAgainBtn" type="Button" parent="MarginContainer/GameEnd/CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+
+[node name="PlayText" type="RichTextLabel" parent="MarginContainer/GameEnd/CenterContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[center]Play Again[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Shop" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Title" type="RichTextLabel" parent="MarginContainer/Shop"]
+layout_mode = 2
+theme = SubResource("Theme_pke6i")
+theme_override_colors/default_color = Color(1, 0.964706, 0.239216, 1)
+bbcode_enabled = true
+text = "[center]PICK AN UPGRADE[/center]"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Shop"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="upgrade1" type="CenterContainer" parent="MarginContainer/Shop/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Control" parent="MarginContainer/Shop/HBoxContainer/upgrade1"]
+custom_minimum_size = Vector2(250, 200)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Shop/HBoxContainer/upgrade1/Button"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 178.0
+theme_override_constants/separation = 20
+
+[node name="sprite1" type="TextureRect" parent="MarginContainer/Shop/HBoxContainer/upgrade1/Button/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_5h6pj")
+stretch_mode = 3
+
+[node name="selector1" type="AnimatedSprite2D" parent="MarginContainer/Shop/HBoxContainer/upgrade1/Button/VBoxContainer/sprite1"]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_ykw5h")
+autoplay = "default"
+centered = false
+offset = Vector2(61, 0)
+
+[node name="text1" type="RichTextLabel" parent="MarginContainer/Shop/HBoxContainer/upgrade1/Button/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "FIRE BREATH II: spew firebolts straight ahead, doing 8 DMG each. Increases range by 30%. "
+fit_content = true
+
+[node name="upgrade2" type="CenterContainer" parent="MarginContainer/Shop/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Control" parent="MarginContainer/Shop/HBoxContainer/upgrade2"]
+custom_minimum_size = Vector2(250, 200)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Shop/HBoxContainer/upgrade2/Button"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 178.0
+theme_override_constants/separation = 20
+
+[node name="sprite2" type="TextureRect" parent="MarginContainer/Shop/HBoxContainer/upgrade2/Button/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_5h6pj")
+stretch_mode = 3
+
+[node name="selector2" type="AnimatedSprite2D" parent="MarginContainer/Shop/HBoxContainer/upgrade2/Button/VBoxContainer/sprite2"]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_ykw5h")
+autoplay = "default"
+centered = false
+offset = Vector2(61, 0)
+
+[node name="text2" type="RichTextLabel" parent="MarginContainer/Shop/HBoxContainer/upgrade2/Button/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "FIRE BREATH II: spew firebolts straight ahead, doing 8 DMG each. Increases range by 30%. "
+fit_content = true
+
+[connection signal="pressed" from="MarginContainer/GameEnd/CenterContainer/PlayAgainBtn" to="." method="_on_play_again_btn_pressed"]

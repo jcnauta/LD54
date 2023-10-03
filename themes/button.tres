@@ -1,0 +1,34 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://ddclwar7626mj"]
+
+[ext_resource type="Texture2D" uid="uid://brlc74fofqc2m" path="res://sprites/ui/button.png" id="1_k26n6"]
+[ext_resource type="FontFile" uid="uid://bal7oi6702oqv" path="res://fonts/Delius-Regular.ttf" id="1_segkq"]
+[ext_resource type="StyleBox" uid="uid://swkfdeyfu7q1" path="res://themes/button_style.tres" id="2_wy55e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6seug"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_roamn"]
+texture = ExtResource("1_k26n6")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+modulate_color = Color(1, 0.964706, 0.807843, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b8dcn"]
+texture = ExtResource("1_k26n6")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+modulate_color = Color(1, 0.694118, 0.360784, 1)
+
+[resource]
+default_font = ExtResource("1_segkq")
+default_font_size = 32
+Button/styles/focus = SubResource("StyleBoxEmpty_6seug")
+Button/styles/hover = SubResource("StyleBoxTexture_roamn")
+Button/styles/normal = ExtResource("2_wy55e")
+Button/styles/pressed = SubResource("StyleBoxTexture_b8dcn")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/font_sizes/normal_font_size = 42
+RichTextLabel/fonts/normal_font = ExtResource("1_segkq")

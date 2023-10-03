@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=3 uid="uid://cj631jgd5elue"]
+
+[ext_resource type="Script" path="res://src/weapons/weapon_2_turd.gd" id="1_25fwt"]
+[ext_resource type="Texture2D" uid="uid://ccxntr4wc2ghs" path="res://sprites/weapons/turd.png" id="1_veqqh"]
+[ext_resource type="Texture2D" uid="uid://buu34l14vvtg" path="res://sprites/weapons/explosion.png" id="3_qo1bs"]
+[ext_resource type="AudioStream" uid="uid://d1kfuuh7ihkfq" path="res://sound/bomb.wav" id="4_ysd7v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyoqf"]
+atlas = ExtResource("3_qo1bs")
+region = Rect2(0, 0, 152, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s4v7"]
+atlas = ExtResource("3_qo1bs")
+region = Rect2(152, 0, 152, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvj07"]
+atlas = ExtResource("3_qo1bs")
+region = Rect2(304, 0, 152, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l63fm"]
+atlas = ExtResource("3_qo1bs")
+region = Rect2(456, 0, 152, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhp3t"]
+atlas = ExtResource("3_qo1bs")
+region = Rect2(608, 0, 152, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjdbs"]
+atlas = ExtResource("3_qo1bs")
+region = Rect2(760, 0, 152, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a884b"]
+atlas = ExtResource("3_qo1bs")
+region = Rect2(912, 0, 152, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_632yq"]
+atlas = ExtResource("3_qo1bs")
+region = Rect2(1064, 0, 152, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a5a87"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyoqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6s4v7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvj07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l63fm")
+}],
+"loop": false,
+"name": &"first",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhp3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjdbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a884b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_632yq")
+}],
+"loop": false,
+"name": &"second",
+"speed": 24.0
+}]
+
+[node name="weapon_2_turd" type="Sprite2D"]
+texture = ExtResource("1_veqqh")
+script = ExtResource("1_25fwt")
+
+[node name="explosion" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_a5a87")
+animation = &"second"
+
+[node name="boom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ysd7v")
+
+[connection signal="animation_finished" from="explosion" to="." method="_on_explosion_animation_finished"]

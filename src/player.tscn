@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://bwhgepinonng4"]
+
+[ext_resource type="Script" path="res://src/player.gd" id="1_f2s51"]
+[ext_resource type="Texture2D" uid="uid://dlqqi3rtifdyg" path="res://sprites/lion.png" id="2_i4qsy"]
+[ext_resource type="AudioStream" uid="uid://dhfwwvawm233a" path="res://sound/jump.wav" id="3_p40wa"]
+[ext_resource type="AudioStream" uid="uid://vmse5mvatko8" path="res://sound/quake.wav" id="4_5tgnm"]
+[ext_resource type="AudioStream" uid="uid://bavnv3f011cki" path="res://sound/spear.wav" id="4_wl18t"]
+[ext_resource type="AudioStream" uid="uid://dxev3rqb415ru" path="res://sound/button_select.wav" id="5_mj043"]
+[ext_resource type="AudioStream" uid="uid://beegx7ngggk4o" path="res://sound/take_damage.wav" id="6_77g1l"]
+[ext_resource type="AudioStream" uid="uid://ccg7llfoycp7n" path="res://sound/game_over.wav" id="7_rdaom"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r016m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i4qsy")
+}],
+"loop": true,
+"name": &"lion",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mtn5"]
+radius = 15.5322
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_f2s51")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r016m")
+animation = &"lion"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(5, 0)
+shape = SubResource("CircleShape2D_7mtn5")
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("3_p40wa")
+volume_db = -10.146
+
+[node name="Spear" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_wl18t")
+
+[node name="Quake" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_5tgnm")
+volume_db = -10.0
+
+[node name="GroundJump" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("5_mj043")
+volume_db = -0.1
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("6_77g1l")
+volume_db = -9.512
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("7_rdaom")
+volume_db = -15.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

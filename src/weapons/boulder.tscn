@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://demvqafmex0bt"]
+
+[ext_resource type="Texture2D" uid="uid://do0i87kv2libm" path="res://sprites/weapons/boulder.png" id="1_le2gi"]
+[ext_resource type="Script" path="res://src/weapons/boulder.gd" id="2_3apuo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pw2t5"]
+radius = 60.0
+
+[node name="boulder" type="Sprite2D"]
+texture = ExtResource("1_le2gi")
+script = ExtResource("2_3apuo")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_pw2t5")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

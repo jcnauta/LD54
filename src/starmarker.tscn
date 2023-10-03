@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2dvlep46ufqs"]
+
+[ext_resource type="Texture2D" uid="uid://cquc8sshw83ba" path="res://sprites/ui/sidebar/star32_white.png" id="1_e4lgb"]
+[ext_resource type="Script" path="res://src/starmarker.gd" id="2_x8wv5"]
+
+[node name="starmarker" type="TextureRect"]
+custom_minimum_size = Vector2(32, 32)
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 30.0
+offset_bottom = 33.0
+texture = ExtResource("1_e4lgb")
+stretch_mode = 3
+script = ExtResource("2_x8wv5")

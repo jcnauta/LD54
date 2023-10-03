@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpqxcvrm8muyx"]
+
+[ext_resource type="PackedScene" uid="uid://1jafcupl8sau" path="res://src/enemy.tscn" id="1_7wss7"]
+[ext_resource type="Script" path="res://src/boss.gd" id="2_j70au"]
+[ext_resource type="Shader" path="res://src/flash_white.gdshader" id="2_vc6hw"]
+[ext_resource type="Texture2D" uid="uid://drvqtxr556dd0" path="res://sprites/candy/boss.png" id="4_r1bfd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w76ie"]
+resource_local_to_scene = true
+shader = ExtResource("2_vc6hw")
+shader_parameter/saturation = 0.0
+shader_parameter/tint = Vector3(1, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uynmr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_r1bfd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qupif"]
+radius = 125.0
+
+[node name="Boss" instance=ExtResource("1_7wss7")]
+script = ExtResource("2_j70au")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_w76ie")
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_uynmr")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_qupif")

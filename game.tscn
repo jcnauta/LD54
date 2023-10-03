@@ -1,0 +1,88 @@
+[gd_scene load_steps=14 format=3 uid="uid://cki77cf0d1ivv"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_rdo14"]
+[ext_resource type="Texture2D" uid="uid://brvcxwu7jucls" path="res://sprites/wall.png" id="3_37rnt"]
+[ext_resource type="PackedScene" uid="uid://bwhgepinonng4" path="res://src/player.tscn" id="3_cu2un"]
+[ext_resource type="PackedScene" uid="uid://deiuaonekjiwr" path="res://src/sidebar.tscn" id="4_aun6h"]
+[ext_resource type="Texture2D" uid="uid://c13wdik3uvy65" path="res://sprites/center.png" id="5_syk5p"]
+[ext_resource type="Texture2D" uid="uid://b4se03hdqmblc" path="res://sprites/shadow.png" id="5_w1vnc"]
+[ext_resource type="PackedScene" uid="uid://d35khqg2ofcma" path="res://src/menu.tscn" id="6_g3c0f"]
+[ext_resource type="AudioStream" uid="uid://ctxeif7co46b8" path="res://sound/star.wav" id="7_7vx3x"]
+[ext_resource type="AudioStream" uid="uid://dujflkvwmwwpo" path="res://sound/powerup.wav" id="8_2dcls"]
+[ext_resource type="AudioStream" uid="uid://3gqoxeqpq875" path="res://sound/win.wav" id="9_dnuol"]
+[ext_resource type="AudioStream" uid="uid://cx6ylbbirxl40" path="res://sound/lions_pit.ogg" id="10_6s57u"]
+[ext_resource type="Script" path="res://music.gd" id="11_1oqk0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okkww"]
+size = Vector2(200, 200)
+
+[node name="Game" type="Node"]
+script = ExtResource("1_rdo14")
+
+[node name="GameWindow" type="SubViewportContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="GameWindow"]
+handle_input_locally = false
+size = Vector2i(1400, 900)
+render_target_update_mode = 4
+
+[node name="CenterWall" type="Sprite2D" parent="GameWindow/SubViewport"]
+z_index = -100
+texture = ExtResource("5_syk5p")
+offset = Vector2(700, 450)
+
+[node name="Area2D" type="Area2D" parent="GameWindow/SubViewport/CenterWall"]
+position = Vector2(700, 450)
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWindow/SubViewport/CenterWall/Area2D"]
+shape = SubResource("RectangleShape2D_okkww")
+
+[node name="Walls" type="Sprite2D" parent="GameWindow/SubViewport"]
+texture = ExtResource("3_37rnt")
+centered = false
+
+[node name="Missiles" type="Node2D" parent="GameWindow/SubViewport"]
+unique_name_in_owner = true
+
+[node name="PlayerShadow" type="Sprite2D" parent="GameWindow/SubViewport"]
+unique_name_in_owner = true
+position = Vector2(0, 813)
+texture = ExtResource("5_w1vnc")
+
+[node name="Player" parent="GameWindow/SubViewport" instance=ExtResource("3_cu2un")]
+unique_name_in_owner = true
+
+[node name="Enemies" type="Node2D" parent="GameWindow/SubViewport"]
+unique_name_in_owner = true
+
+[node name="EnemiesSpecial" type="Node2D" parent="GameWindow/SubViewport"]
+unique_name_in_owner = true
+
+[node name="Pickups" type="Node2D" parent="GameWindow/SubViewport"]
+unique_name_in_owner = true
+
+[node name="Sidebar" parent="." instance=ExtResource("4_aun6h")]
+
+[node name="Menu" parent="." instance=ExtResource("6_g3c0f")]
+visible = false
+
+[node name="Star" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7vx3x")
+volume_db = -8.0
+
+[node name="Powerup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_2dcls")
+volume_db = -8.0
+
+[node name="Win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_dnuol")
+volume_db = -8.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("10_6s57u")
+autoplay = true
+script = ExtResource("11_1oqk0")

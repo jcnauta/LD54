@@ -1,0 +1,167 @@
+[gd_scene load_steps=11 format=3 uid="uid://deiuaonekjiwr"]
+
+[ext_resource type="Texture2D" uid="uid://cxkco5qe4ru3q" path="res://sprites/progress_bar.png" id="1_1ywpt"]
+[ext_resource type="Theme" uid="uid://dxlhi1hb8cu50" path="res://themes/paragraph_text.tres" id="1_nehtj"]
+[ext_resource type="Theme" uid="uid://hd56ksuaqu65" path="res://themes/paragraph_text_12.tres" id="2_fwaj8"]
+[ext_resource type="Script" path="res://src/healthbar.gd" id="2_ga8iy"]
+[ext_resource type="Script" path="res://src/starbar.gd" id="3_50wvi"]
+[ext_resource type="Script" path="res://src/candybar.gd" id="6_71jkv"]
+[ext_resource type="Texture2D" uid="uid://dxe6njajlux50" path="res://sprites/ui/heart_bright.png" id="6_fruam"]
+[ext_resource type="Texture2D" uid="uid://q35fw5arci35" path="res://sprites/ui/star32.png" id="7_0sryy"]
+[ext_resource type="Texture2D" uid="uid://bfxyb36mgok2y" path="res://sprites/candy/candy_rainbow.png" id="8_yi6st"]
+[ext_resource type="Script" path="res://src/upgrades.gd" id="10_xt8fa"]
+
+[node name="Sidebar" type="Panel"]
+custom_minimum_size = Vector2(200, 900)
+offset_left = 1400.0
+offset_right = 1600.0
+offset_bottom = 900.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LionPit" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_nehtj")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+bbcode_enabled = true
+text = "[center]Lion's Pit[center]"
+fit_content = true
+
+[node name="FlappySurvivor" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_fwaj8")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+bbcode_enabled = true
+text = "[center]Flappy Survivor[/center]"
+fit_content = true
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="Healthbar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 30.0
+fill_mode = 3
+texture_under = ExtResource("1_1ywpt")
+texture_progress = ExtResource("1_1ywpt")
+tint_progress = Color(1, 0.203922, 0.203922, 1)
+script = ExtResource("2_ga8iy")
+
+[node name="Starbar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 30.0
+fill_mode = 3
+texture_under = ExtResource("1_1ywpt")
+texture_progress = ExtResource("1_1ywpt")
+tint_progress = Color(0.866667, 0.662745, 0.278431, 1)
+script = ExtResource("3_50wvi")
+
+[node name="Candybar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 20.0
+fill_mode = 3
+texture_under = ExtResource("1_1ywpt")
+texture_progress = ExtResource("1_1ywpt")
+tint_progress = Color(1, 0.294118, 1, 1)
+script = ExtResource("6_71jkv")
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="health" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("6_fruam")
+
+[node name="star" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("7_0sryy")
+stretch_mode = 2
+
+[node name="candy" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("8_yi6st")
+
+[node name="Control3" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Upgrades" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 32
+script = ExtResource("10_xt8fa")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Upgrades"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Upgrades/CenterContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Up1" type="TextureRect" parent="MarginContainer/VBoxContainer/Upgrades/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer/Upgrades"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Upgrades/CenterContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Up2" type="TextureRect" parent="MarginContainer/VBoxContainer/Upgrades/CenterContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CenterContainer3" type="CenterContainer" parent="MarginContainer/VBoxContainer/Upgrades"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Upgrades/CenterContainer3"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Up3" type="TextureRect" parent="MarginContainer/VBoxContainer/Upgrades/CenterContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Stars" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Stars1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Stars"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Stars2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Stars"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Stars3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Stars"]
+unique_name_in_owner = true
+layout_mode = 2
